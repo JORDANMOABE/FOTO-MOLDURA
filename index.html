@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Moldura</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Adicione suas fotos à moldura</h1>
+        <div class="upload-section">
+            <label for="upload" class="upload-label">Escolha suas fotos</label>
+            <input type="file" id="upload" accept="image/*" multiple>
+        </div>
+        <div class="preview-section" id="preview-section">
+            <!-- Imagens pré-visualizadas aparecerão aqui -->
+        </div>
+        <button id="apply-frame" style="display: none;">Aplicar Moldura</button>
+        <button id="download-all" style="display: none;">Baixar Todas Imagens</button>
+        <p id="error-message" style="color: red; display: none;"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
