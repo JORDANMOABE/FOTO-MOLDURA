@@ -47,6 +47,7 @@ input[type="file"] {
 
 .preview-container {
     position: relative;
+    display: inline-block;
 }
 
 canvas, .preview-img {
@@ -55,7 +56,22 @@ canvas, .preview-img {
     border-radius: 5px;
 }
 
-#download-all {
+.delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(255, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: red;
+}
+
+#download-all, #start-over {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
@@ -67,4 +83,12 @@ canvas, .preview-img {
 
 #download-all:hover {
     background-color: #218838;
+}
+
+#start-over {
+    background-color: #ffc107;
+}
+
+#start-over:hover {
+    background-color: #e0a800;
 }

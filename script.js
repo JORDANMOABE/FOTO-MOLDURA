@@ -1,6 +1,7 @@
 document.getElementById('upload').addEventListener('change', handleImages, false);
 document.getElementById('apply-frame').addEventListener('click', applyFrame);
 document.getElementById('download-all').addEventListener('click', downloadAllImages);
+document.getElementById('start-over').addEventListener('click', startOver);
 
 function handleImages(event) {
     const files = event.target.files;
@@ -29,6 +30,18 @@ function handleImages(event) {
             img.onload = function() {
                 const previewContainer = document.createElement('div');
                 previewContainer.classList.add('preview-container');
+                const deleteButton = document.createElement('button');
+                deleteButton.classList.add('delete-btn');
+                deleteButton.textContent = 'X';
+                deleteButton.onclick = function() {
+                    previewSection.removeChild(previewContainer);
+                    if (!previewSection.getElementsByTagName('img').length) {
+                        applyFrameButton.style.display = 'none';
+                        document.getElementById('download-all').style.display = 'none';
+                        document.getElementById('start-over').style.display = 'none';
+                    }
+                };
+                previewContainer.appendChild(deleteButton);
                 previewContainer.appendChild(img);
                 previewSection.appendChild(previewContainer);
             };
@@ -37,6 +50,7 @@ function handleImages(event) {
     });
 
     applyFrameButton.style.display = 'inline-block';
+    document.getElementById('start-over').style.display = 'inline-block';
 }
 
 function applyFrame() {
@@ -69,6 +83,18 @@ function downloadAllImages() {
         const link = document.createElement('a');
         link.download = `foto-com-moldura-${index + 1}.png`;
         link.href = canvas.toDataURL();
+        document.body.appendChild(link);
         link.click();
+        document.body.removeChild(link);
     });
+}
+
+function startOver() {
+    const previewSection = document.getElementById('preview-section');
+    previewSection.innerHTML = '';
+    document.getElementById('apply-frame').style.display = 'none';
+    document.getElementById('download-all').style.display = 'none';
+    document.getElementById('start-over').style.display = 'none';
+    document.getElementById('upload').value = '';
+    document.getElementById('error-message').style.display = 'none';
 }
